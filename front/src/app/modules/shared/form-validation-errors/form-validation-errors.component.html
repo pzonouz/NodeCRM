@@ -1,0 +1,26 @@
+<ng-container *ngIf="getErrors()">
+  <mat-error *ngIf="control.errors.required">This field is required!</mat-error>
+  <mat-error *ngIf="control.errors.minlength">Enter
+    {{
+    control.errors.minlength.requiredLength -
+    control.errors.minlength.actualLength
+    }}
+    more charachter(s)</mat-error>
+  <mat-error *ngIf="control.errors.maxlength">Maximum lenght is:{{
+    control.errors.maxlength.requiredLength
+    }}.Remove
+    {{
+    control.errors.maxlength.actualLength -
+    control.errors.maxlength.requiredLength
+    }}
+    more charachter(s)</mat-error>
+  <mat-error *ngIf="control.errors.maxlength">Maximum lenght is:{{
+    control.errors.maxlength.requiredLength
+    }}.Remove
+    {{
+    control.errors.maxlength.actualLength -
+    control.errors.maxlength.requiredLength
+    }}
+    more charachter(s)</mat-error>
+  <mat-error *ngIf="control.errors.pattern">Invalid format</mat-error>
+</ng-container>

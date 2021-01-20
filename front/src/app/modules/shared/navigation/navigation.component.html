@@ -1,0 +1,23 @@
+<mat-toolbar color="primary" class="toolbar">
+  <button mat-icon-button class="example-icon" (click)="sideNav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon">
+    <mat-icon>account_box</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sideNav class="leftNav">
+    <mat-nav-list>
+      <a mat-button *ngFor="let item of navList" [routerLink]="item.path">
+        <mat-icon>{{ item.icon }}</mat-icon> {{ item.label }}
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="navContents">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

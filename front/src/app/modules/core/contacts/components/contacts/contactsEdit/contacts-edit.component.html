@@ -1,0 +1,40 @@
+<form [formGroup]="contactEdit" (ngSubmit)="onSubmit($event)">
+  <div>
+    <span class="spacer"></span>
+    <button mat-fab color="primary" type="submit" disabled="{{ !contactEdit.valid }}">
+      <mat-icon>done</mat-icon>
+    </button>
+    <button mat-fab color="warn" mat-dialog-close (click)="onCloseClick($event)">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label>Firstname:</mat-label>
+    <input matInput placeholder="Ex.Peyman" type="text" formControlName="firstName" [(ngModel)]="data.firstName" />
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+  <app-form-validation-errors [control]="contactEdit.get('firstName')"></app-form-validation-errors>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Lastname:</mat-label>
+    <input matInput placeholder="Ex.Khalili" type="text" formControlName="lastName" [(ngModel)]="data.lastName" />
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+  <app-form-validation-errors [control]="contactEdit.get('lastName')"></app-form-validation-errors>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Address:</mat-label>
+    <input matInput type="text" formControlName="address" [(ngModel)]="data.address" />
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+  <app-form-validation-errors [control]="contactEdit.get('address')"></app-form-validation-errors>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Phone Number:</mat-label>
+    <input matInput type="text" placeholder="Ex.09........." formControlName="phoneNumber"
+      [(ngModel)]="data.phoneNumber" />
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+  <app-form-validation-errors [control]="contactEdit.get('phoneNumber')"></app-form-validation-errors>
+
+</form>

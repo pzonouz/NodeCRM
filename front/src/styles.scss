@@ -1,0 +1,54 @@
+//------------------------------variables---------------------
+//------------------------------------------------------------
+$toolbarHeight: 80px;
+$sidenavTop: $toolbarHeight;
+$sideNavWidth: 150px;
+//------------------------------------------------------------
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.dialogBox .mat-dialog-container {
+  border-width: 3px;
+  border-radius: 15px;
+  border-style: solid;
+}
+.toolbar {
+  height: $toolbarHeight;
+}
+.leftNav {
+  width: $sideNavWidth;
+}
+.navContents {
+  min-height: 550px;
+  // min-width: 500px;
+  width: 100% !important;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+.sticky {
+  z-index: 1000;
+  top: $sidenavTop;
+  position: fixed;
+  left: 83%;
+  height: 64px;
+  opacity: 1;
+  transition: opacity 0.25s ease-out, height 0.15s ease;
+}
+.image {
+  width: 100px;
+}
+.card {
+  display: flex;
+  width: 100px;
+  height: 200px;
+  margin: 15px;
+}
