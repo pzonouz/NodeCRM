@@ -7,15 +7,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { ContactsRoutingModule } from './contacts-routing.module';
 import { ContactsComponent } from './contacts/contacts.component';
 import { ContactsEditComponent } from './contactsEdit/contacts-edit.component';
+import { ContactsCreateComponent } from './contactsCreate/contacts-create.component';
 
 @NgModule({
-  declarations: [ContactsComponent, ContactsEditComponent],
   imports: [
     CommonModule,
     ContactsRoutingModule,
     MaterialModule,
     SharedModule,
     HttpClientModule,
+  ],
+  declarations: [
+    ContactsCreateComponent,
+    ContactsComponent,
+    ContactsEditComponent,
   ],
 })
 export class ContactsModule {}

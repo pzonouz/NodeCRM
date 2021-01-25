@@ -1,6 +1,6 @@
 //------------------------------variables---------------------
 //------------------------------------------------------------
-$toolbarHeight: 80px;
+$toolbarHeight: 50px;
 $sidenavTop: $toolbarHeight;
 $sideNavWidth: 150px;
 //------------------------------------------------------------
@@ -36,7 +36,7 @@ body {
 }
 .sticky {
   z-index: 1000;
-  top: $sidenavTop;
+  top: $sidenavTop + 5;
   position: fixed;
   left: 83%;
   height: 64px;

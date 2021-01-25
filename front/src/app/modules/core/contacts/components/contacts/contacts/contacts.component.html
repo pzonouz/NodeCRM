@@ -1,12 +1,12 @@
 <div class="sticky">
-  <button mat-fab color="accent">
+  <button mat-fab color="accent" (click)="onContactCreate()">
     <mat-icon>add</mat-icon>
   </button>
 </div>
 <mat-card class="card" *ngFor="let item of contacts">
   <mat-card-header></mat-card-header>
   <mat-card-content>
-    <img src="{{ item.image }}" class="image" />
+    <img src="">
     <div>{{ item.firstName }}</div>
     <div>{{ item.lastName }}</div>
     <div>{{ item.phoneNumber }}</div>
@@ -15,8 +15,9 @@
     <a mat-icon-button>
       <mat-icon>more_horiz</mat-icon>
     </a>
-    <a mat-icon-button (click)="openDialog(item.id)">
+    <a mat-icon-button (click)="onContactEdit(item.id)">
       <mat-icon>edit</mat-icon>
     </a>
   </mat-card-actions>
 </mat-card>
+{{contacts[0][1] | json}}

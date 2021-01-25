@@ -42,7 +42,7 @@ export class ContactsEditComponent implements OnInit {
     $event.preventDefault();
     this.contactService
       .editContact(this.data.id, this.contactEdit.value)
-      .subscribe((result) => console.log(result));
+      .subscribe();
 
     this.matDialogRef.close();
   }

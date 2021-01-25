@@ -1,40 +1,32 @@
+import { ContactDto } from './contact.dto';
 import { Injectable } from '@nestjs/common';
-import { Contact } from './contacts.model';
-import { v4 as uuidv4 } from 'uuid';
+
+import { InjectRepository } from '@nestjs/typeorm';
+import { Contact } from './contacts.entity';
+import { Repository } from 'typeorm';
+import { ContactType } from './contactType.enum';
 
 @Injectable()
 export class ContactsService {
-  private _contacts: Contact[] = [
-    {
-      id: uuidv4(),
-      firstName: 'Peyman',
-      lastName: 'Khalili',
-      phoneNumber: '09148998933',
-      address: 'ardabil',
-      image: '../../../assets/peyman.jpg',
-    },
-    {
-      id: uuidv4(),
-      firstName: 'Farzan',
-      lastName: 'Fathi',
-      phoneNumber: '09902173612',
-      address: 'ardabil',
-      image: '../../../assets/peyman.jpg',
-    },
-    {
-      id: uuidv4(),
-      firstName: 'Arman',
-      lastName: 'Khalili',
-      phoneNumber: '00000000',
-      address: 'ardabil',
-      image: '../../../assets/peyman.jpg',
-    },
-  ];
-  findAll(): Contact[] {
-    return this._contacts;
+  constructor(
+    @InjectRepository(Contact)
+    private contacRepository: Repository<Contact>,
+  ) {}
+
+  async findAll(): Promise<any> {
+    return await this.contacRepository.find().then((result) => {
+      // console.log(result);
+      return result;
+    });
   }
-  editOne(id: number, contact: Contact): Contact {
-    const index = this._contacts.findIndex((x) => x.id === id);
-    return Object.assign(this._contacts[index], contact);
+  findOne(): Promise<Contact> {
+    return this.contacRepository.findOne();
+  }
+  editOne(id: number, contact: Contact): Promise<any> {
+    return this.contacRepository.update(id, contact);
+  }
+  createOne(contact: Contact): any {
+    contact.contactType = ContactType.CUSTOMER;
+    this.contacRepository.insert(contact).then((result) => console.log(result));
   }
 }

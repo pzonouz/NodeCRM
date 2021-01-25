@@ -6,10 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/shared/material/material.module';
-import { ContactsCreateComponent } from './modules/core/contacts/components/contacts-create/contacts-create.component';
 
 @NgModule({
-  declarations: [AppComponent, ContactsCreateComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

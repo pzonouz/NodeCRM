@@ -6,7 +6,7 @@ export class Contact {
   lastName: String;
   address: String;
   phoneNumber: string;
-  image: String;
+  // image: String;
 }
 
 @NgModule({

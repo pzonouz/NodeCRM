@@ -1,8 +1,9 @@
+import { ContactsEditComponent } from './../contactsEdit/contacts-edit.component';
 import { Contact } from './../../../../../shared/models/models.module';
-import { ContactsEditComponent } from '../contactsEdit/contacts-edit.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactsService } from '../contacts.service';
+import { ContactsCreateComponent } from '../contactsCreate/contacts-create.component';
 
 @Component({
   selector: 'app-contacts',
@@ -14,20 +15,38 @@ export class ContactsComponent implements OnInit {
     public dialog: MatDialog,
     private contactsService: ContactsService
   ) {}
-  contacts: Contact[] = [];
+  contacts: Contact[] = [
+    {
+      id: 1,
+      firstName: 'Peyman',
+      lastName: 'Khalili',
+      address: 'Ardabil',
+      phoneNumber: '09148998933',
+    },
+  ];
   ngOnInit(): void {
-    this.contactsService.getContacts().subscribe((result) => {
+    console.log('oninit');
+    this.contactsService.getContacts().subscribe((result: Contact[]) => {
       console.log(result);
-      this.contacts = result;
+      if (result) {
+        this.contacts = result;
+      }
     });
   }
-  openDialog(id: number) {
+  onContactEdit(id: number) {
     const dialogRef = this.dialog.open(ContactsEditComponent, {
       height: '450px',
       width: '280px',
       data: this.contacts.find((x) => x.id === id),
       panelClass: 'dialogBox',
     });
-    dialogRef.afterClosed().subscribe((result) => {});
+  }
+
+  onContactCreate() {
+    const dialogRef = this.dialog.open(ContactsCreateComponent, {
+      height: '450px',
+      width: '280px',
+      panelClass: 'dialogBox',
+    });
   }
 }
