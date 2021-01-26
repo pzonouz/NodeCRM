@@ -1,10 +1,14 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
 import { ContactType } from './contactType.enum';
 
 @Entity()
+@Unique(['phoneNumber'])
 export class Contact {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column()
+  email: string;
 
   @Column()
   firstName: string;

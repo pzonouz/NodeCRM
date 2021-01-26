@@ -1,3 +1,5 @@
+import { ContactDeleteComponent } from './contactDelete/contact-delete.component';
+import { ContactsMoreComponent } from './contactsMore/contacts-more.component';
 import { SharedModule } from './../../../../shared/shared.module';
 import { MaterialModule } from '../../../../shared/material/material.module';
 import { NgModule } from '@angular/core';
@@ -21,6 +23,8 @@ import { ContactsCreateComponent } from './contactsCreate/contacts-create.compon
     ContactsCreateComponent,
     ContactsComponent,
     ContactsEditComponent,
+    ContactsMoreComponent,
+    ContactDeleteComponent,
   ],
 })
 export class ContactsModule {}

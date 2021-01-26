@@ -2,10 +2,7 @@ import { ContactsService } from './../contacts.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-contacts-create',
@@ -21,19 +18,17 @@ export class ContactsCreateComponent implements OnInit {
   contactCreate: FormGroup;
   ngOnInit(): void {
     this.contactCreate = new FormGroup({
-      firstName: new FormControl(
-        ''
-        // [
-        //   Validators.required,
-        //   Validators.minLength(3),
-        //   Validators.maxLength(15),
-        // ]
-      ),
+      firstName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(15),
+      ]),
       lastName: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(15),
       ]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       address: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
@@ -53,14 +48,17 @@ export class ContactsCreateComponent implements OnInit {
     });
   }
   onSubmit($event) {
-    this.concatService
-      .createContact(this.contactCreate.value)
-      .pipe(
-        catchError((err) => {
-          this.openSnackBar(err.error.message[0], '');
-          return of(0);
-        })
-      )
-      .subscribe((result) => console.log(result));
+    this.concatService.createContact(this.contactCreate.value).subscribe(
+      (res) => {
+        this.matDialogRef.close();
+        this.openSnackBar('Successfully Created!', '');
+      },
+      (err) => {
+        this.openSnackBar(err.error.text, '');
+      },
+      () => {
+        console.log('completed');
+      }
+    );
   }
 }

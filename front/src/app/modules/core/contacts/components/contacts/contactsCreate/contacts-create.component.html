@@ -20,13 +20,18 @@
     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
   </mat-form-field>
   <app-form-validation-errors [control]="contactCreate.get('lastName')"></app-form-validation-errors>
-
   <mat-form-field appearance="outline">
     <mat-label>Address:</mat-label>
     <input matInput type="text" formControlName="address" />
     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
   </mat-form-field>
   <app-form-validation-errors [control]="contactCreate.get('address')"></app-form-validation-errors>
+  <mat-form-field appearance="outline">
+    <mat-label>Email:</mat-label>
+    <input matInput type="text" formControlName="email" />
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+  <app-form-validation-errors [control]="contactCreate.get('email')"></app-form-validation-errors>
 
   <mat-form-field appearance="outline">
     <mat-label>Phone Number:</mat-label>

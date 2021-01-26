@@ -1,9 +1,9 @@
-import { Contact } from './contacts.entity';
 import { ContactDto } from './contact.dto';
 import { ContactsService } from './contacts.service';
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
@@ -21,14 +21,41 @@ export class ContactsController {
   }
 
   @Put('/edit/:id')
-  editOne(@Param('id') id: number, @Body() contact: ContactDto): any {
-    return this.contactsService.editOne(id, contact);
+  async editOne(
+    @Param('id') id: number,
+    @Body() contact: ContactDto,
+  ): Promise<any> {
+    return await this.contactsService
+      .editOne(id, contact)
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {
+        return err.detail;
+      });
+  }
+  @Delete('/delete/:id')
+  async deleteOne(@Param('id') id: number) {
+    return await this.contactsService
+      .deleteOne(id)
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {
+        return err.detail;
+      });
   }
 
   @UsePipes(ValidationPipe)
   @Post('/create')
-  createOne(@Body() contact: ContactDto): any {
-    // return this.contactsService.createOne(contact);
-    console.log(this.contactsService.createOne(contact));
+  async createOne(@Body() contact: ContactDto): Promise<any> {
+    return await this.contactsService
+      .createOne(contact)
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {
+        return err.detail;
+      });
   }
 }
