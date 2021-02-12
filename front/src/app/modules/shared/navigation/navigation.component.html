@@ -4,9 +4,17 @@
   </button>
   <span>NodeCRM</span>
   <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon">
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon">
     <mat-icon>account_box</mat-icon>
   </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <span>Profile</span>
+    </button>
+    <button mat-menu-item (click)="onLogout()">
+      <span>Logout</span>
+    </button>
+  </mat-menu>
 </mat-toolbar>
 
 <mat-sidenav-container>

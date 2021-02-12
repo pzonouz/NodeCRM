@@ -1,0 +1,18 @@
+<form [formGroup]="loginGroup" (ngSubmit)="onSubmit()" class="loginForm">
+  <h1>Login</h1>
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Username:</mat-label>
+      <input matInput [formControl]="loginGroup.get('username')">
+    </mat-form-field>
+    <app-form-validation-errors [control]="loginGroup.get('username')"></app-form-validation-errors>
+    <mat-form-field appearance="outline">
+      <mat-label>Password:</mat-label>
+      <input matInput [formControl]="loginGroup.get('password')">
+      <app-form-validation-errors [control]="loginGroup.get('pasword')"></app-form-validation-errors>
+    </mat-form-field>
+  </div>
+  <button mat-raised-button color="primary" type="submit" class="button">Login</button>
+  <button mat-raised-button color="warn" type="reset">Reset</button>
+
+</form>

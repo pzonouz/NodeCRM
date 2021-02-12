@@ -12,5 +12,7 @@ export class FormValidationErrorsComponent implements OnInit {
   getErrors() {
     return this.control.errors && this.control.dirty;
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.control = new FormControl();
+  }
 }

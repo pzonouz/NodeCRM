@@ -1,0 +1,26 @@
+<div class="sticky">
+  <button mat-fab color="accent" (click)="onUserCreate()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+<mat-card class="card" *ngFor="let item of users">
+  <mat-card-header></mat-card-header>
+  <mat-card-content>
+    <img src="">
+    <div>{{ item.username }}</div>
+    <!-- <div>{{ item.lastName }}</div>
+    <div>{{ item.phoneNumber }}</div> -->
+    <!-- <div>{{ item.email }}</div> -->
+  </mat-card-content>
+  <mat-card-actions>
+    <!-- <a mat-icon-button (click)="onContactMore(item.id)">
+      <mat-icon>more_horiz</mat-icon>
+    </a> -->
+    <a mat-icon-button (click)="onUserEdit(item.userId)">
+      <mat-icon>edit</mat-icon>
+    </a>
+    <a mat-icon-button (click)="onUserDelete(item.userId)">
+      <mat-icon>delete</mat-icon>
+    </a>
+  </mat-card-actions>
+</mat-card>

@@ -11,6 +11,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatMenuModule } from '@angular/material/menu';
 
 const materials = [
   MatToolbarModule,
@@ -25,6 +26,7 @@ const materials = [
   FormsModule,
   ReactiveFormsModule,
   MatSnackBarModule,
+  MatMenuModule,
 ];
 
 @NgModule({

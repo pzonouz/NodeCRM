@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ContactDeleteComponent } from './../contactDelete/contact-delete.component';
 import { ContactsMoreComponent } from '../contactsMore/contacts-more.component';
 import { ContactsEditComponent } from './../contactsEdit/contacts-edit.component';
@@ -17,24 +18,23 @@ const dialogHeight = '580px';
 export class ContactsComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
-    private contactsService: ContactsService
+    private contactsService: ContactsService,
+    private router: Router
   ) {}
-  contacts: Contact[] = [
-    // {
-    //   id: 1,
-    //   email: 'p.zonouz@gmail.com',
-    //   firstName: 'Peyman',
-    //   lastName: 'Khalili',
-    //   address: 'Ardabil',
-    //   phoneNumber: '09148998933',
-    // },
-  ];
+  contacts: Contact[] = [];
+
   ngOnInit(): void {
-    this.contactsService.getContacts().subscribe((result: Contact[]) => {
-      if (result.length !== 0) {
-        this.contacts = result;
+    this.contactsService.getContacts().subscribe(
+      (result: Contact[]) => {
+        if (result.length !== 0) {
+          this.contacts = result;
+        }
+      },
+      (err) => {
+        localStorage.removeItem('access_token');
+        this.router.navigate(['']);
       }
-    });
+    );
   }
   onContactMore(id: number) {
     const dialogRef = this.dialog.open(ContactsMoreComponent, {

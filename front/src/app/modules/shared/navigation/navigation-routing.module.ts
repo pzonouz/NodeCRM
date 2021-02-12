@@ -8,9 +8,27 @@ const routes: Routes = [
     component: NavigationComponent,
     children: [
       {
-        path: '',
+        path: 'contacts',
         loadChildren: () =>
-          import('../../core/contacts/components/contacts/contacts.module').then((m) => m.ContactsModule),
+          import(
+            '../../core/contacts/components/contacts/contacts.module'
+          ).then((m) => m.ContactsModule),
+      },
+      {
+        path: 'tasks',
+        loadChildren: () =>
+          import('./../../core/tasks/tasks.module').then((m) => m.TasksModule),
+      },
+      {
+        path: 'users',
+        loadChildren: () =>
+          import('../../core/users/users.module').then(
+            (m) => m.UsersModule
+          ),
+      },
+      {
+        path: '',
+        redirectTo: 'contacts',
       },
     ],
   },
