@@ -7,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactsService } from '../contacts.service';
 import { ContactsCreateComponent } from '../contactsCreate/contacts-create.component';
-
-const dialogHeight = '580px';
+import { Constants } from 'src/app/modules/shared/constants';
 
 @Component({
   selector: 'app-contacts',
@@ -38,7 +37,7 @@ export class ContactsComponent implements OnInit {
   }
   onContactMore(id: number) {
     const dialogRef = this.dialog.open(ContactsMoreComponent, {
-      height: dialogHeight,
+      height: Constants.dialog_Height,
       width: '280px',
       data: this.contacts.find((x) => x.id === id),
       panelClass: 'dialogBox',
@@ -46,7 +45,7 @@ export class ContactsComponent implements OnInit {
   }
   onContactEdit(id: number) {
     const dialogRef = this.dialog.open(ContactsEditComponent, {
-      height: dialogHeight,
+      height: Constants.dialog_Height,
       width: '280px',
       data: this.contacts.find((x) => x.id === id),
       panelClass: 'dialogBox',
@@ -68,7 +67,7 @@ export class ContactsComponent implements OnInit {
   }
   onContactCreate() {
     const dialogRef = this.dialog.open(ContactsCreateComponent, {
-      height: dialogHeight,
+      height: Constants.dialog_Height,
       width: '280px',
       panelClass: 'dialogBox',
     });

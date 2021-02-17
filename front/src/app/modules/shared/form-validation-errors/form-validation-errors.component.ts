@@ -7,12 +7,15 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./form-validation-errors.component.scss'],
 })
 export class FormValidationErrorsComponent implements OnInit {
-  constructor() {}
+  constructor() { }
   @Input() control: FormControl;
   getErrors() {
     return this.control.errors && this.control.dirty;
   }
   ngOnInit(): void {
-    this.control = new FormControl();
+
+  }
+  onInput() {
+
   }
 }

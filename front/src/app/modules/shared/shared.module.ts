@@ -8,4 +8,4 @@ import { FormValidationErrorsComponent } from './form-validation-errors/form-val
   imports: [CommonModule, MaterialModule],
   exports: [FormValidationErrorsComponent],
 })
-export class SharedModule {}
+export class SharedModule { }

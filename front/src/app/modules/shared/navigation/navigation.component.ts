@@ -1,3 +1,4 @@
+import { User } from './../../core/users/users.module';
 import { Router } from '@angular/router';
 import { AuthService } from './../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,13 +15,19 @@ export interface navItem {
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent implements OnInit {
+  userName: string;
   constructor(private authService: AuthService, private router: Router) {}
 
   onLogout() {
     this.authService.logOut();
     location.reload();
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.profile().subscribe((result: User) => {
+      this.userName = result.username;
+    });
+  }
+
   navList: navItem[] = [
     {
       label: 'Contacts',

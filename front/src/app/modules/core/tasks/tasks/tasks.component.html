@@ -1,0 +1,26 @@
+<div class="sticky">
+  <button mat-fab color="accent" (click)="onTaskCreate()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+<mat-card class="card" *ngFor="let item of tasks">
+  <mat-card-header></mat-card-header>
+  <mat-card-content>
+    <img src="">
+    <div>{{ item.name }}</div>
+    <!-- <div>{{ item.lastName }}</div>
+    <div>{{ item.phoneNumber }}</div> -->
+    <!-- <div>{{ item.email }}</div> -->
+  </mat-card-content>
+  <mat-card-actions>
+    <a mat-icon-button (click)="onTaskMore(item.id)">
+      <mat-icon>more_horiz</mat-icon>
+    </a>
+    <a mat-icon-button (click)="onTaskEdit(item.id)">
+      <mat-icon>edit</mat-icon>
+    </a>
+    <a mat-icon-button (click)="onTaskDelete(item.id)">
+      <mat-icon>delete</mat-icon>
+    </a>
+  </mat-card-actions>
+</mat-card>

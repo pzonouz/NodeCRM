@@ -1,4 +1,3 @@
-import { RolesGuard } from './../auth/roles.guard';
 import { ContactDto } from './contact.dto';
 import { ContactsService } from './contacts.service';
 import {
@@ -14,8 +13,6 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { JwtGuard } from 'src/auth/jwt.guard';
-import { Roles } from 'src/users/roles.decorator';
-import { Role } from 'src/users/role.enum';
 
 @UseGuards(JwtGuard)
 @Controller('contacts')
@@ -25,8 +22,8 @@ export class ContactsController {
   async findAll(): Promise<any> {
     return await this.contactsService.findAll();
   }
-  @UseGuards(RolesGuard)
-  @Roles(Role.Admin)
+
+  @UsePipes(ValidationPipe)
   @Put('/edit/:id')
   async editOne(
     @Param('id') id: number,

@@ -1,0 +1,20 @@
+<form [formGroup]="tasksCreate">
+  <div>
+    <button mat-fab color="primary" type="submit" disabled={{ tasksCreate }}>
+      <mat-icon>done</mat-icon>
+    </button>
+    <button mat-fab color="warn">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label>Task Name:</mat-label>
+    <input matInput type="text" (input)="onInput($event)" formControlName="taskName">
+  </mat-form-field>
+  <app-form-validation-errors [control]="tasksCreate.get('taskName')"></app-form-validation-errors>
+  <mat-form-field appearance="outline">
+    <mat-label>Task Description:</mat-label>
+    <input matInput formControlName="taskDescription">
+  </mat-form-field>
+  <app-form-validation-errors [control]="tasksCreate.get('taskDescription')"></app-form-validation-errors>
+</form>

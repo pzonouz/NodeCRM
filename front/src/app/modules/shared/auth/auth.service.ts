@@ -1,19 +1,27 @@
 import { Router } from '@angular/router';
 import { Constants } from './../constants';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private httpClient: HttpClient) {}
+  AuthrizationHeader: string;
+  constructor(private httpClient: HttpClient) {
+    this.AuthrizationHeader = `Bearer ${localStorage.getItem('access_token')}`;
+  }
 
   login(username: string, password: string) {
-    const loginUrl = `${Constants.API_URL}/auth/login`;
-    return this.httpClient.post(loginUrl, {
+    return this.httpClient.post(`${Constants.API_URL}/auth/login`, {
       username,
       password,
+    });
+  }
+  profile() {
+    console.log(this.AuthrizationHeader);
+    return this.httpClient.get(`${Constants.API_URL}/auth/profile`, {
+      headers: new HttpHeaders({ Authorization: this.AuthrizationHeader }),
     });
   }
 

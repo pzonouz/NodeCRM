@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
+import { Task } from './../tasks/tasks.entity';
+import {
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  Unique,
+} from 'typeorm';
 
 @Entity()
 @Unique(['username'])
@@ -14,4 +21,7 @@ export class User {
 
   @Column()
   role: string;
+
+  @OneToMany(() => Task, (task) => task.user)
+  tasks: Task[];
 }
